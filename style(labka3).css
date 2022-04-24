@@ -1,0 +1,57 @@
+.header{
+background-color: rgb(77, 185, 135);
+height: 80px;
+width: 100%;
+position: absolute;
+left: 0;
+top: 0;
+}
+.menu{
+background-color: rgb(77, 185, 135);
+height: 80px;
+width: 50%;
+position: absolute;
+right: 0;
+top: 0;
+border: 20px;
+}
+.menu-item {
+list-style: none;
+float: right;
+margin-left: 20px;
+margin-top: 25px;
+padding: 5px;
+}
+.menu-button{
+margin-right: 10px;
+}
+.text-header{
+text-align: left;
+margin-top: 20px;
+margin-left: 1%;
+}
+.contentsite{
+margin-top: 80px;
+height: 30%;
+width: 100%;
+position: static;
+}
+.text-dod-selection{
+font-size: 20px;
+text-align: center;
+shape-outside:none;
+}
+.img-position{
+   text-align: left;
+   margin-left: 1%;
+   margin-top: 10px;
+   padding: 10px;
+}
+.footer{
+background-color: rgb(77, 185, 135);
+height: 70px;
+width: 100%;
+position: absolute;
+margin-bottom: 0;
+right: 0;
+}
