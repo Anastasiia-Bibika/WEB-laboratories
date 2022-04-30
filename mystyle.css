@@ -1,9 +1,27 @@
-
+.header{
+    background-color: rgb(77, 185, 135);
+    padding: 20px;
+}
+.head-content h1,h2{
+    text-align: center;
+    color: rgb(34, 44, 58);
+}
+.text-contentsite{
+    font-size: 20px;
+    text-align: center;
+}
+.text-dod-selection h1{
+    color: rgb(34, 44, 58);
+    text-align: center;
+}
+.text-dod-selection p,ol{
+    font-size: 18px;
+}
 textarea{
     width: 100%;
     height: 150px;
     border: 10px;
-
+    margin: 4px;
 }
 input,textarea{
     border: 5px;
@@ -24,7 +42,9 @@ input[type=submit]{
     width: 165px;
     height: 40px;
     background-color: rgb(70, 168, 135);
-
+}
+.message{
+    font-size: 30px;
 }
 .menu-item{
 margin-left: 30px;
@@ -33,10 +53,75 @@ font-style: initial;
 column-width: 3px;
 color: rgb(31, 90, 80);
 }
+.menu-item:hover{
+    transform: scale(1.2);
+    transition-duration: 0.4s;
+    color: rgb(221, 247, 129);
+}
 .search{
     margin-left: 45%;
     height: 30%;
     width: 40%;
 }
-
-
+.footer{
+background-color: rgb(77, 185, 135);
+padding: 20px;
+}
+.Image ul,
+.Image li{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+.Image li{
+    display: inline-block;
+    width: 300px;
+    position: relative;
+}
+.Image img{
+    max-width: 100%;
+    display:block;
+}
+.heroesimg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 67%;
+    background-color: rgba(43, 44, 12, 0.527);
+    color: rgb(236, 255, 185);
+    text-align:center;
+    font-style: inherit;
+    padding-top: 100px;
+    opacity: 0;
+    -webkit-transition: all .5s;
+    -o-transition:all .5s;
+    transition: all .5s;
+}
+.Image li:hover .heroesimg{
+    opacity: 1;
+}
+.page{
+color: rgb(70, 79, 129);
+text-align: left;
+}
+.author{
+color: rgb(70, 79, 129);
+text-align: left;
+}
+.author>a:hover{
+    font-size: 20px;
+    color: rgb(221, 247, 129);
+    transition-duration: 0.3s;
+}
+.contact_wrapper{
+    text-align: center;
+    color: rgb(30, 45, 78);
+    width: 750px ;
+    margin: 0 auto;
+}
+.line p{
+    font-size: large;
+     column-gap: normal;
+     color: rgb(30, 85, 67);
+}
