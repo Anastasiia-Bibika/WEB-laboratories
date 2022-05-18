@@ -25,6 +25,7 @@
  class StringAccounting extends Accounting{
     ToString() {
       return `
+              code:${this.code}
               ПІБ: ${this.pib}
               Посада: ${this.posada}
               Salary: ${this.salary}
@@ -101,12 +102,12 @@ class VisualWorkers extends Workers{
               ${worker.experience}
           </td>
           <td> 
-              <button onclick="DeleteUser(${worker.id})">
+              <button onclick="deleteWorker(${worker.id})">
                   Delete
               </button>
           </td>
           <td> 
-              <button onclick="StartEditUser(${worker.id})">
+              <button onclick="StartEditWorker(${worker.id})">
                   Edit
               </button>
           </td>
@@ -139,6 +140,9 @@ class VisualWorkers extends Workers{
                 <th>
                     Childrens
                 </th>
+                <th>
+                    Experience
+                </th>
                 <th colspan="2">
                     Actions
                 </th>
@@ -160,7 +164,8 @@ class VisualWorkers extends Workers{
                 <input name="pib" placeholder="pib"> 
                 <input name="posada" placeholder="posada">
                 <input name="salary" placeholder="salary">
-                <input name="Childrens" placeholder="childrens">
+                <input name="k_childrens" placeholder="k_childrens">
+                <input name="experience" placeholder="experience">
                 <button type="button" onclick="AddNewWorker()">
                     Save
                 </button>
@@ -178,7 +183,8 @@ class VisualWorkers extends Workers{
                 <input name="pib" placeholder="pib"> 
                 <input name="posada" placeholder="posada">
                 <input name="salary" placeholder="salary">
-                <input name="Childrens" placeholder="childrens">
+                <input name="k_childrens" placeholder="k_childrens">
+                <input name="experience" placeholder="experience">
                 <button type="button" onclick="EditWorker()">
                     Save
                 </button>
@@ -193,7 +199,7 @@ class VisualWorkers extends Workers{
   }
   addEventListners() {
     document.addEventListener("deleteWorker", (event) => {
-      super.delete(event.detail.id);
+      super.Deleteel(event.detail.id);
       document.getElementById("root").innerHTML = this.toHTML();
     });
     document.addEventListener("addWorker", (event) => {
@@ -204,6 +210,7 @@ class VisualWorkers extends Workers{
             event.detail.posada,
             event.detail.salary,
             event.detail.k_childrens,
+            event.detail.experience,
           )
         );
         document.getElementById("root").innerHTML = this.toHTML();
@@ -217,6 +224,7 @@ class VisualWorkers extends Workers{
             event.detail.posada,
             event.detail.salary,
             event.detail.k_childrens,
+            event.detail.experience,
           )
         );
         document.getElementById("root").innerHTML = this.toHTML();
@@ -224,7 +232,7 @@ class VisualWorkers extends Workers{
     }
 }
 function deleteWorker(id) {
-    let deleteUserEvent = new CustomEvent("deleteWorker", { detail: { id } });
+    let deleteWorkerEvent = new CustomEvent("deleteWorker", { detail: { id } });
     document.dispatchEvent(deleteWorkerEvent);
 }
 function AddNewWorker() {
@@ -233,13 +241,15 @@ function AddNewWorker() {
     const posada = document.getElementsByName("posada")[0].value;
     const salary = document.getElementsByName("salary")[0].value;
     const k_childrens = document.getElementsByName("k_childrens")[0].value;
-    let addUserEvent = new CustomEvent("addWorker", {
+    const experience = document.getElementsByName("experience")[0].value;
+    let addWorkerEvent = new CustomEvent("addWorker", {
       detail: {
         code,
         pib,
         posada,
         salary,
         k_childrens,
+        experience,
       },
     });
     document.dispatchEvent(addWorkerEvent);
@@ -248,14 +258,15 @@ function ShowAddWorker() {
     document.getElementById("add").style.display = "block";
     document.getElementById("edit").style.display = "none";
 }
-function EditUser() {
+function editWorker() {
     const code = document.getElementsByName("code")[1].value;
     const pib = document.getElementsByName("pib")[1].value;
     const posada = document.getElementsByName("posada")[1].value;
     const salary = document.getElementsByName("salary")[1].value;
     const k_childrens= document.getElementsByName("k_childrens")[1].value;
+    const experience = document.getElementsByName("experience")[1].value;
     const id = document.getElementsByName("id").value;
-    let addUserEvent = new CustomEvent("editWorker", {
+    let addWorkerEvent = new CustomEvent("editWorker", {
       detail: {
         id,
         code,
@@ -263,6 +274,7 @@ function EditUser() {
         posada,
         salary,
         k_childrens,
+        experience
       },
     });
     document.dispatchEvent(addWorkerEvent);
@@ -272,22 +284,23 @@ function StartEditWorker(id) {
     document.getElementById("edit").style.display = "block";
     document.getElementById("add").style.display = "none";
   
-    let car = all.getById(id);
+    let worker = arr.getById(id);
   
-    document.getElementsByName("code")[1].value = car.code;
-    document.getElementsByName("pib")[1].value = car.pib;
-    document.getElementsByName("posada")[1].value = car.mark;
-    document.getElementsByName("salary")[1].value = car.number;
-    document.getElementsByName("k_childrens")[1].value = car.color;
+    document.getElementsByName("code")[1].value = worker.code;
+    document.getElementsByName("pib")[1].value = worker.pib;
+    document.getElementsByName("posada")[1].value = worker.posada;
+    document.getElementsByName("salary")[1].value = worker.salary;
+    document.getElementsByName("k_childrens")[1].value = worker.k_childrens;
+    document.getElementsByName("experience")[1].value = worker.experience;
     document.getElementsByName("id").value = id;
   }
 
 
 
-let Worker1 = new StringAccounting("826751655202","Мельник Анастасія Віталіївна","вчитель,класний керівник","12 тис","22 дітей","10 років");
-let Worker2 = new StringAccounting("601573325903","Бобик Ірина Олександрівна","завуч","17 тис.грн.","10 дітей","5 років");
-let Worker3 = new StringAccounting("710215529773","Кулиш Олексій Іванович","директор","20 тис.грн.","17 дітей","7 років");
-let Worker4 = new StringAccounting("827966337792","Шейтер Руслан Васильовичем","психолог","7 тис.грн","5 дітей","7 років");
+let Worker1 = new StringAccounting("826751655202","Мельник Анастасія Віталіївна","вчитель,класний керівник","12 тис","22","10 років");
+let Worker2 = new StringAccounting("601573325903","Бобик Ірина Олександрівна","завуч","17 тис.грн.","10","5 років");
+let Worker3 = new StringAccounting("710215529773","Кулиш Олексій Іванович","директор","20 тис.грн.","17","7 років");
+let Worker4 = new StringAccounting("827966337792","Шейтер Руслан Васильовичем","психолог","7 тис.грн","5","7 років");
 
 let arr = new VisualWorkers();
 
